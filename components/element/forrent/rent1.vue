@@ -43,7 +43,6 @@
 </template>
 
 <script setup lang="ts">
-import { useurl } from '~/composable/apiurl'
 import { useSidebarfilterStore } from '~/store/sidebarfilter'
 import { Navigation, Pagination } from 'swiper';
 import type {featureoption} from '~/static/data/types/fetureoption'
@@ -56,7 +55,7 @@ interface FetchResponse {
     }
 }
 declare function useFetch(url: string): Promise<FetchResponse>;
-let { data } = await useFetch(useurl + '/data/property.json')
+let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/property.json')
 let fill = ref<rent[]>([])
 const rentdata = <rent[]>data.value.LatestPropertyData
 let setting = [Navigation, Pagination]

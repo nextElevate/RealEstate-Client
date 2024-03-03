@@ -61,10 +61,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useurl } from '~/composable/apiurl'
-import { Navigation, EffectFade } from 'swiper'
-import type {featureoption} from '~/static/data/types/fetureoption'
-import type {product1} from '~/static/data/types/featureproperty'
+import { Navigation, EffectFade } from 'swiper';
+import type {featureoption} from '~/static/data/types/fetureoption';
+import type {product1} from '~/static/data/types/featureproperty';
 interface FetchResponse {
     data: {
         value: {
@@ -77,7 +76,7 @@ interface MyProps {
 }
 let props = defineProps<MyProps>()
 declare function useFetch(url: string): Promise<FetchResponse>;
-let { data } = await useFetch(useurl + '/data/letestforsaleoption.json')
+let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/letestforsaleoption.json')
 let options: featureoption[] = data.value.featureoption;
 function getimg(value: string) {
     let img = useCookie('img')

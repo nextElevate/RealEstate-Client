@@ -44,7 +44,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useurl } from '~/composable/apiurl'
 import { Navigation } from 'swiper'
 interface agent {
     name: string;
@@ -67,9 +66,9 @@ interface FetchResponse {
 }
 declare function useFetch(url: string): Promise<FetchResponse>;
 let setting = [Navigation]
-let { data } = await useFetch(useurl + '/data/clientAgent.json')
+let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/clientAgent.json')
 let AgentData: agent[] = data.value.MeetOurAgent
-let { data: icons } = await useFetch(useurl + '/data/about.json')
+let { data: icons } = await useFetch("https://sheltos-vue.vercel.app" + '/data/about.json')
 let AllIcons: Icons[] = icons.value.icons
 let breakpoints = {
     320: {

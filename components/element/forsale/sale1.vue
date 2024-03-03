@@ -1,87 +1,87 @@
 <template>
-    <div class="col-xl-4 col-md-6 wow fadeInUp" v-for="(item, index) in props.data" :key="index">
-        <div class="property-box">
-            <div class="property-image">
-                <nuxt-link to="/" class="bg-size d-block" :style="'background-image:url(' + item.img + ')'">
-                    <img :src="item.img" class="bg-img d-none" alt="">
-                    <div class="labels-left">
-                        <div>
-                            <span class="label"
-                                :class="item.label[0] === 'no fees' ? 'label-dark' : 'label-shadow'">{{ item.label[0] }}</span>
+    <swiper :breakpoints="breakpoints" :slidesPerView="3" :loop="true" :spaceBetween="50"
+        class="property-4 arrow-gradient arrow-right list-property">
+        <swiper-slide v-for="(item, index) in alldata" :key="index">
+            <div class="property-box">
+                <div class="property-image">
+                    <nuxt-link to="javascript:void(0)" class="background bg-size"
+                        :style="'background-image:url(' + item.img + ')'">
+                        <img :src="item.img" alt="" class="bg-img d-none">
+                    </nuxt-link>
+                    <div class="overlay-property">
+                        <div class="overlay-box">
+                            <h4>{{ item.title }}</h4>
+                            <p class="font-roboto">{{ item.details }}</p>
+                            <nuxt-link :to="'/property/single-property-8/' + item.id" @click="getimg(item.img)">{{ 'View                                                          Details'}}</nuxt-link>
                         </div>
-                        <span v-if="item.label[1]" class="label label-success">{{ item.label[1] }}</span>
-                    </div>
-                </nuxt-link>
-                <div class="bottom-property">
-                    <div class="d-flex">
-                        <div>
-                            <h5>
-                                <nuxt-link :to="'/property/single-property-8/' + item.id">{{ item.title }}</nuxt-link>
-                            </h5>
-                            <h6> ${{ item.price }} <small>/{{ 'start from' }}</small></h6>
-                        </div>
-                        <nuxt-link :to="'/property/single-property-8/' + item.id" class="btn btn-gradient mt-3"
-                            :class="color ? color : 'color-6'" @click="getimg(item.img)">{{ 'details' }}</nuxt-link>
-                    </div>
-                    <div class="overlay-option">
-                        <ul>
-                            <li v-for="(option, index) in catagory" :key="index">
-                                <span>{{ option.name }}</span>
-                                <h6 v-if="option.key === 'area'">{{ item[option.key] }}m<sup>2</sup></h6>
-                                <h6 v-else>{{ item[option.key] }}</h6>
-                            </li>
-                        </ul>
                     </div>
                 </div>
+                <div class="text-center">
+                    <span class="label label-gradient label-lg color-4">${{ item.price }}*</span>
+                </div>
+                <div class="property-details">
+                    <ul class="icon-property">
+                        <li v-for="(i, index) in Icons.slice(0, 2)" :key="index">
+                            <div class="d-flex">
+                                <div class="property-icon color-4">
+                                    <svg class="property-svg">
+                                        <use :xlink:href="i.icon"></use>
+                                    </svg>
+                                </div>
+                                <span v-if="i.name == 'home'">{{ item[i.name] }}</span>
+                                <span v-else>{{ item[i.name] }} Sq Ft</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="icon-property mb-0">
+                        <li v-for="(i, index) in Icons.slice(2, 4)" :key="index">
+                            <div class="d-flex">
+                                <div class="property-icon color-4">
+                                    <svg class="property-svg">
+                                        <use :xlink:href="i.icon"></use>
+                                    </svg>
+                                </div>
+                                <span v-if="i.name == 'rooms'">{{ item[i.name] }} Rooms</span>
+                                <span v-else>{{ item[i.name] }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
+        </swiper-slide>
+    </swiper>
 </template>
-
-<script lang="ts" setup>
-import { useurl } from '~/composable/apiurl'
-interface Option{
-     name:string,
-    key:string
-}
-interface propertydata {
-  title:string;
-  propertyStatus:string;
-  label:string[];
-  price: string;
-  bed: number;
-  bath: number;
-  balcony: number;
-  area: number;
-  id: string;
-  img: string;
-  date: string;
-}
+<script setup lang="ts">
+import type {list} from '~/static/data/types/classiclist'
 interface FetchResponse {
     data: {
         value: {
-            options: Option[]
+            LatestPropertyInClassicLayout: list[]
+            classic: Icon[]
         }
     }
 }
-interface MyProps {
-    data: propertydata[];
-    color: string
+interface Icon {
+    icon: string;
+    name: string;
 }
-let props = defineProps<MyProps>()
-declare function useFetch(url: string): Promise<FetchResponse>;
-let { data: option } = await useFetch(useurl + '/data/letestforsaleoption.json')
-let catagory: Option[] = option.value.options
+let { data: icon }:FetchResponse = await useFetch("https://sheltos-vue.vercel.app" + '/data/looking-icon.json')
+let Icons: Icon[] = icon.value.classic
+let { data }:FetchResponse = await useFetch("https://sheltos-vue.vercel.app" + '/data/property.json')
+let alldata: list[] = data.value.LatestPropertyInClassicLayout
+let breakpoints = {
+    0: {
+        slidesPerView: 1
+    },
+    992: {
+        slidesPerView: 2
+    },
+    1200: {
+        slidesPerView: 3
+    },
+}
 function getimg(value: string) {
-    let img = useCookie('img');
+    let img = useCookie('img')
     img.value = value
 }
 </script>
-
-<style  scoped>
-.bg-size {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-}
-</style>

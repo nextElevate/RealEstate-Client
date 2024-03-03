@@ -16,7 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useurl } from '~/composable/apiurl'
 interface Find {
     class1: string;
     class2: string;
@@ -36,7 +35,7 @@ interface FetchResponse {
     }
 }
 declare function useFetch(url: string): Promise<FetchResponse>;
-let { data } = await useFetch(useurl + '/data/findproperty.json')
+let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/findproperty.json')
 let FindProperty: Find[] = data.value.find
 </script>
 

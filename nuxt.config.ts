@@ -11,13 +11,13 @@ export default defineNuxtConfig({
       ]
     },
   },
-  css:['~/assets/scss/app.scss' ,],
+  css:['~/assets/scss/app.scss' ,  ],
   ssr:true,
   script:[
-      {
-        src:'/bootstrap.bundle.min.js'
-      }
-  ],
+    {
+      src:'/bootstrap.bundle.min.js'
+    }
+],
   alias: {
     pinia: "/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs"
   },

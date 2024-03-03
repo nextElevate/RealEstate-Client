@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useurl } from '~/composable/apiurl'
 import { Autoplay } from 'swiper';
 interface Brand {
     src: string
@@ -30,7 +29,7 @@ let setting = {
     modules: [Autoplay],
 
 }
-let { data } = await useFetch(useurl + '/data/brand.json')
+let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/brand.json')
 let AllBrand: Brand[] = data.value.brand
 let breakpoints = {
     320: {
