@@ -15,7 +15,7 @@
                     <div class="labels-left">
                         <div>
                             <span :class="item.label[0] === 'no fees' ? 'label-dark' : 'label-shadow'" class="label">{{
-                                item.label[0] }}</span>
+            item.label[0] }}</span>
                         </div>
                         <span v-if="item.label[1]" class="label label-success">{{ item.label[1] }}</span>
                     </div>
@@ -45,8 +45,8 @@
 <script setup lang="ts">
 import { useSidebarfilterStore } from '~/store/sidebarfilter'
 import { Navigation, Pagination } from 'swiper';
-import type {featureoption} from '~/static/data/types/fetureoption'
-import type {rent} from '~/static/data/types/letestforrent'
+import type { featureoption } from '~/static/data/types/fetureoption'
+import type { rent } from '~/static/data/types/letestforrent'
 interface FetchResponse {
     data: {
         value: {
@@ -71,18 +71,21 @@ function wishlist(value: rent) {
     store.wishlist(favproduct.value)
 
 }
+
+const { data: price } = await useFetch("http://localhost:3030/property/last-three");
+
+
 onMounted(() => {
     if (!process.client) return;
 
-  const storedData = localStorage.getItem('wishlist');
-  if (storedData) {
-    try {
-      const parsedData: rent[] = JSON.parse(storedData);
-      fill.value = parsedData;
-    } catch (error) {
-      console.error('Error parsing wishlist data:', error);
+    const storedData = localStorage.getItem('wishlist');
+    if (storedData) {
+        try {
+            const parsedData: rent[] = JSON.parse(storedData);
+            fill.value = parsedData;
+        } catch (error) {
+            console.error('Error parsing wishlist data:', error);
+        }
     }
-  }
 })
 </script>
-

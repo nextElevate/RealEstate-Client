@@ -3,14 +3,15 @@
         <div class="container">
             <div class="home-left">
                 <div>
-                    <swiper class="home-slider-1 arrow-light slick-shadow" :loop="true" navigation :modules="[Navigation]"
-                        :slides-per-view="1" dir="ltr">
+                    <swiper class="home-slider-1 arrow-light slick-shadow" :loop="true" navigation
+                        :modules="[Navigation]" :slides-per-view="1" dir="ltr">
                         <swiper-slide class="home-content" v-for="(item, index) in slides" :key="index">
                             <div>
                                 <img :src="item.img" class="img-fluid m-0" />
                                 <h6>{{ item.description }}</h6>
                                 <h1>{{ item.title }}</h1>
-                                <nuxt-link :to="item.link" class="btn btn-gradient color-6">{{ props.button }}</nuxt-link>
+                                <nuxt-link :to="item.link" class="btn btn-gradient color-6">{{ props.button
+                                    }}</nuxt-link>
                             </div>
                         </swiper-slide>
                     </swiper>

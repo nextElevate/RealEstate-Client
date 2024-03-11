@@ -14,8 +14,9 @@
     </section>
 </template>
 
+
 <script lang="ts" setup>
-let title: string = 'Latest Property';
+let title: string = 'Последни имоти';
 let content: string = 'Elegant retreat in Coral Gables setting. This home provides entertaining spaces with kitchen opening';
 </script>
 
