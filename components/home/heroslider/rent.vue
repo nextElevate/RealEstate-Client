@@ -8,7 +8,7 @@
                         <h2>{{ 'Latest For Rent' }}</h2>
                         <hr />
                     </div>
-                    <ElementForrentRent1 />
+                    <ElementForrentRent />
                 </div>
             </div>
         </div>
