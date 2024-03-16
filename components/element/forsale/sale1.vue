@@ -58,33 +58,9 @@
 <script setup lang="ts">
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import type { Property} from '~/interfaces/Properties';
 
 let modules = [Navigation, Pagination]
-
-
-interface Property {
-    area: string,
-    commisionSum: number,
-    construction: string;
-    constructionDate: number;
-    description: string;
-    image: Array<string>;
-    ownerPrice: number;
-    price: number;
-    propertyStatus: string;
-    propertyType: string;
-    street: string;
-    streetNumber: string;
-    entranceNumber: string,
-    apartmentNumber: string,
-    buildingFloorCount: number,
-    currencyType: string,
-    floor: number
-    sku: number;
-    _id: string,
-    createdAt: string;
-
-}
 
 interface FetchResponse {
     data: {
@@ -100,6 +76,7 @@ interface Icon {
 
 // TODO remove request and import it directly.If the data object is not used then remove it also
 let { data: icon }: FetchResponse = await useFetch("https://sheltos-vue.vercel.app" + '/data/looking-icon.json')
+console.log('icon value', icon.value)
 let Icons: Icon[] = icon.value.classic
 
 let breakpoints = {
@@ -127,6 +104,7 @@ const fetchData = async () => {
     alldata.value = data.value as Property[]
     console.log('Received properties data:', data.value)
 }
+
 onMounted(() => {
     fetchData()
 })

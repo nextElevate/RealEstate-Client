@@ -18,20 +18,20 @@
         }
     ],
     "featureoption":[
-        {
-            "src":"/image/svg/icon/double-bed.svg",
-            "name":"Bed",
-            "key":"bed"
-        },
-        {
-            "src":"/image/svg/icon/bathroom.svg",
-            "name":"Baths",
-            "key":"bath"
-        },
-        {
-            "src":"/image/svg/icon/square-ruler-tool.svg",
-            "name":"Sq Ft",
-            "key":"sqft"
-        }
+      {
+        "src": "/image/svg/icon/double-bed.svg",
+        "name": "Легла",
+        "key": "bed"
+      },
+      {
+        "src": "/image/svg/icon/bathroom.svg",
+        "name": "Бани",
+        "key": "bath"
+      },
+      {
+        "src": "/image/svg/icon/square-ruler-tool.svg",
+        "name": "Кв.м.",
+        "key": "sqft"
+      }
     ]
 }

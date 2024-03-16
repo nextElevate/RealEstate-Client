@@ -1,5 +1,5 @@
 export interface featureoption {
-    src:string;
+    iconName:string;
     name:string;
     key:string
 }
