@@ -1,6 +1,6 @@
  export interface rent {
   id: string;
-  img: string[];
+  image: string[];
   propertyStatus: string;
   label: string[];
   country: string;

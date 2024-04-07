@@ -5,23 +5,22 @@
                 <div class="property-image blue">
                     <swiper :loop="true" :space-between="0" :modules="setting" class="property-slider color-6"
                         :pagination="{ clickable: true }" navigation>
-                        <swiper-slide v-for="img in item.img" :key="img">
+                        <swiper-slide v-for="img in item.image" :key="img">
                             <a href="javascript:void(0)" class="bg-size background"
                                 :style="'background-image: url(' + img + ');'">
                                 <img :src="img" class="bg-img d-none" alt="" />
                             </a>
                         </swiper-slide>
                     </swiper>
-                    <div class="labels-left">
-                        <div>
-                            <span :class="item.label[0] === 'no fees' ? 'label-dark' : 'label-shadow'" class="label">{{
-            item.label[0] }}</span>
+                    <div class="labels-left" v-if="item.label">
+                        <div >
+                            <span :class="item.label[0].vip === true ? 'label-dark' : 'label-shadow'" class="label">VIP</span>
                         </div>
-                        <span v-if="item.label[1]" class="label label-success">{{ item.label[1] }}</span>
+                        <span v-if="item.label[1].isNew" class="label label-success">НОВА ОБЯВА</span>
                     </div>
                     <div class="seen-data">
                         <Icon name="material-symbols:android-camera-outline" />
-                        <span>10</span>
+                        <span>{{ item.image.length }}</span>
                     </div>
                     <div class="overlay-property-box">
                         <nuxt-link to="javascript:void(0)" class="effect-round" data-bs-toggle="tooltip"
@@ -57,7 +56,6 @@ interface FetchResponse {
 declare function useFetch(url: string): Promise<FetchResponse>;
 let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/property.json')
 let fill = ref<rent[]>([])
-const rentdata = <rent[]>data.value.LatestPropertyData
 let setting = [Navigation, Pagination]
 let store = useSidebarfilterStore();
 let compareproduct = ref<rent[]>([])
@@ -72,8 +70,13 @@ function wishlist(value: rent) {
 
 }
 
-const { data: price } = await useFetch("http://localhost:3030/property/last-three");
-
+const {data: rent }= await useFetch('http://localhost:3030/property/last-rent')
+// TODO remove this after implement labels
+// rent.value.forEach(obj => {
+//     obj.label = ['oepn house','no fees','sale,vip']
+// });
+console.log('RENT =>', rent)
+const rentdata = <rent[]>rent;
 
 onMounted(() => {
     if (!process.client) return;

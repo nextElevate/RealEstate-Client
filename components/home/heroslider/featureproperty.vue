@@ -19,16 +19,6 @@
 import type {product1} from '~/static/data/types/featureproperty'
 import type { Property} from '~/interfaces/Properties';
 
-// interface FetchResponse {
-//     data: {
-//         value: {
-//             FeaturedProperty: product1[]
-//         }
-//     }
-// }
-// declare function useFetch(url: string): Promise<FetchResponse>
-// let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/property.json')
-// let featureproduct = <product1[]>data.value.FeaturedProperty
 const featureproduct = ref<Property | []>([])
 
 const useFetchData = async (url: string) => {
