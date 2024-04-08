@@ -1,24 +1,27 @@
  export interface rent {
-  id: string;
+  _id: string;
+  propertyType:string;
   image: string[];
   propertyStatus: string;
-  label: string[];
-  country: string;
-  title: string;
+  label: { name: string; vip?: boolean; isNew?: boolean }[];
+  city: string;
+  description: string;
+  location:string;
   price: string;
-  home:string;
-  details: string;
-  bed: number;
-  bath: number;
-  sqft: number;
-  rooms: number;
-  date: string;
-  rent: boolean;
-  sale: boolean;
-  propertyType: string;
-  agencies: string;
-  video?:string;
-  type?:string;
+  ownerPrice:number;
+  area: string;
+  commisionSum: number;
+  construction:string;
+  constructionDate: number;
+  street: string;
+  streetNumber: string;
+  entranceNumber: string;
+  apartmentNumber: string;
+  buildingFloorCount: number;
+  floor:number;
+  currencyType:string;
+  sku:number;
+  createdAt:string;
 }
 
 export default rent;

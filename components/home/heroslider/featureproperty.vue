@@ -16,8 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import type {product1} from '~/static/data/types/featureproperty'
-import type { Property} from '~/interfaces/Properties';
+import type { Property } from '~/interfaces/Properties';
 
 const featureproduct = ref<Property | []>([])
 
@@ -25,17 +24,17 @@ const useFetchData = async (url: string) => {
     const { data, error, refresh } = await useFetch(url);
     if (error.value) {
         console.error('Error fetching properties:', error.value)
-    } 
-    if(!data.value){
-       await refresh()
-    }   
+    }
+    if (!data.value) {
+        await refresh()
+    }
     return data.value as Property
 }
 
 featureproduct.value = await useFetchData('http://localhost:3030/property/vip-properties')
 console.log('feature product', featureproduct.value)
 
-onBeforeMount (async () => {
+onBeforeMount(async () => {
 })
 
 </script>

@@ -13,10 +13,12 @@
                         </swiper-slide>
                     </swiper>
                     <div class="labels-left" v-if="item.label">
-                        <div >
-                            <span :class="item.label[0].vip === true ? 'label-dark' : 'label-shadow'" class="label">VIP</span>
+                        <div v-if="item.label[0]?.vip === true">
+                            <span class="label label-dark">VIP</span>
                         </div>
-                        <span v-if="item.label[1].isNew" class="label label-success">НОВА ОБЯВА</span>
+                        <div v-if="item.label[1]?.isNew === true">
+                            <span class="label label-success">НОВА ОБЯВА</span>
+                        </div>
                     </div>
                     <div class="seen-data">
                         <Icon name="material-symbols:android-camera-outline" />
@@ -30,7 +32,7 @@
                         <nuxt-link to="javascript:void(0)" class="effect-round like added" data-bs-toggle="tooltip"
                             data-bs-placement="left" title="wishlist" @click="wishlist(item)">
                             <Icon
-                                :name="fill?.find((ele) => ele.id == item.id) ? 'ph:heart-straight-fill' : 'ph:heart-straight-thin'"
+                                :name="fill?.find((ele) => ele._id == item._id) ? 'ph:heart-straight-fill' : 'ph:heart-straight-thin'"
                                 class="text-black" />
                         </nuxt-link>
                     </div>
@@ -44,7 +46,6 @@
 <script setup lang="ts">
 import { useSidebarfilterStore } from '~/store/sidebarfilter'
 import { Navigation, Pagination } from 'swiper';
-import type { featureoption } from '~/static/data/types/fetureoption'
 import type { rent } from '~/static/data/types/letestforrent'
 interface FetchResponse {
     data: {
@@ -54,7 +55,6 @@ interface FetchResponse {
     }
 }
 declare function useFetch(url: string): Promise<FetchResponse>;
-let { data } = await useFetch("https://sheltos-vue.vercel.app" + '/data/property.json')
 let fill = ref<rent[]>([])
 let setting = [Navigation, Pagination]
 let store = useSidebarfilterStore();
@@ -70,12 +70,9 @@ function wishlist(value: rent) {
 
 }
 
-const {data: rent }= await useFetch('http://localhost:3030/property/last-rent')
-// TODO remove this after implement labels
-// rent.value.forEach(obj => {
-//     obj.label = ['oepn house','no fees','sale,vip']
-// });
-console.log('RENT =>', rent)
+const { data: rent } = await useFetch('http://localhost:3030/property/last-rent')
+
+
 const rentdata = <rent[]>rent;
 
 onMounted(() => {
