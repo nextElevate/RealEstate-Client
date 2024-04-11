@@ -2,7 +2,7 @@
     <nav>
         <div class="main-navbar">
             <div class="mainnav">
-                <CommonHeaderElementNavmenu color=""/>
+                <CommonHeaderElementNavmenu color="black" />
             </div>
         </div>
     </nav>

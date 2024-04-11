@@ -1,8 +1,7 @@
 <template>
-    <swiper
-     :breakpoints="breakpoints" effect="fade" :modules="modules"  navigation :pagination="true" :slidesPerView="4" :loop="true" :spaceBetween="50"
-        class="property-4 arrow-gradient  arrow-right list-property">
-        <swiper-slide v-for="(item, index) in alldata"   :key="index">
+    <swiper :breakpoints="breakpoints" effect="fade" :modules="modules" navigation :pagination="true" :slidesPerView="4"
+        :loop="true" :spaceBetween="50" class="property-4 arrow-gradient  arrow-right list-property">
+        <swiper-slide v-for="(item, index) in alldata" :key="index">
             <div class="property-box">
                 <div class="property-image">
                     <nuxt-link to="javascript:void(0)" class="background bg-size"
@@ -13,8 +12,8 @@
                         <div class="overlay-box">
                             <h4>{{ item.propertyStatus }}</h4>
                             <p class="font-roboto truncate">{{ item.description }}</p>
-                            <nuxt-link :to="'/property/single-property-8/' + item.sku"
-                                @click="item.image[0]">Прочети повечв</nuxt-link>
+                            <nuxt-link :to="'/property/single-property-10/' + item._id" @click="item.image[0]">Прочети
+                                повечв</nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -31,8 +30,8 @@
                                         <use :xlink:href="i.icon"></use>
                                     </svg>
                                 </div>
-                                <span  v-if="i.name == 'home'">{{ item.construction  }}</span>
-                                <span  v-else>{{  item.area }}</span>
+                                <span v-if="i.name == 'home'">{{ item.construction }}</span>
+                                <span v-else>{{ item.area }}</span>
                             </div>
                         </li>
                     </ul>
@@ -58,7 +57,7 @@
 <script setup lang="ts">
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import type { Property} from '~/interfaces/Properties';
+import type { Property } from '~/interfaces/Properties';
 
 let modules = [Navigation, Pagination]
 
@@ -89,18 +88,19 @@ let breakpoints = {
     1200: {
         slidesPerView: 3
     },
-  
+
 }
 const alldata = ref<Property[]>([]);
 
 const fetchData = async () => {
     const { data, error, refresh } = await useFetch('http://localhost:3030/property/last-three/')
+
     if (error.value) {
         console.error('Error fetching properties:', error.value)
-    } 
-    if(!data.value){
-       await refresh()
-    }   
+    }
+    if (!data.value) {
+        await refresh()
+    }
     alldata.value = data.value as Property[]
     console.log('Received properties data:', data.value)
 }
@@ -111,13 +111,13 @@ onMounted(() => {
 
 </script>
 <style scoped>
-.truncate{
-  width: 100%;
-  line-height: 1.2em;
-  height: auto;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+.truncate {
+    width: 100%;
+    line-height: 1.2em;
+    height: auto;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
 }
 </style>

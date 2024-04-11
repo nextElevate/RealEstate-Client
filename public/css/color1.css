@@ -7796,8 +7796,8 @@ header {
           margin-right: 40px; }
         header .main-navbar .nav-menu > li > a {
           display: block;
-          color: white;
-          font-size: 14px;
+          color: black;;
+          font-size: 25px;
           font-family: Rubik, sans-serif;
           font-weight: 500;
           text-decoration: none;

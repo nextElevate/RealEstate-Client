@@ -12,7 +12,7 @@
         </div>
     </div>
     <div>
-        <CommonHeader />
+        <CommonHeader :isFrontPage="isFrontPage" />
         <slot />
         <CommonFooter />
 
@@ -22,12 +22,17 @@
 
 <script lang="ts" setup>
 let loader = ref<boolean>(true);
-
+const route = useRoute()
+let isFrontPage = ref<boolean>(false)
 onMounted(() => {
     setTimeout(() => {
         loader.value = false;
     }, 100);
 })
+
+watchEffect(() => {
+    isFrontPage.value = route.path === '/';
+});
 </script>
 
 <style lang="scss" scoped></style>

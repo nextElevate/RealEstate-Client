@@ -1,17 +1,17 @@
 <template>
-    <ul class="header-right">
-        <li class="right-menu color-6">
+    <ul class="header-right test1">
+        <li class="right-menu ">
             <ul class="nav-menu">
-                <CommonHeaderElementMenurightLanguage/>
+                <CommonHeaderElementMenurightLanguage />
                 <li class="dropdown">
-                    <!-- <nuxt-link to="/page/user-panel/user-favourites">  TODO implement it!--> 
+                    <!-- <nuxt-link to="/page/user-panel/user-favourites">  TODO implement it!-->
                     <nuxt-link to="/">
-                        <Icon name="material-symbols:favorite-outline" style="font-size:18px" />
+                        <Icon name="material-symbols:favorite-outline" style="font-size:18px" class="test2" />
                     </nuxt-link>
                 </li>
                 <li class="dropdown currency">
                     <a href="javascript:void(0)" @click.prevent="currency()">
-                        <Icon name="ph:currency-dollar-bold" style="font-size:18px" />
+                        <Icon name="ph:currency-dollar-bold" style="font-size:18px" class="test2" />
                     </a>
                     <ul class="nav-submenu" :class="showing">
                         <li><a href="javascript:void(0)">Dollar</a></li>
@@ -23,7 +23,7 @@
                 <li class="dropdown">
                     <!-- <nuxt-link to="/page/otherpages/login"> TODO Implement it! -->
                     <nuxt-link to="/">
-                        <Icon name="ri:user-3-line" style="font-size:18px" />
+                        <Icon name="ri:user-3-line" style="font-size:18px" class="test2" />
                     </nuxt-link>
                 </li>
             </ul>

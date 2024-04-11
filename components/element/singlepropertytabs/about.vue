@@ -13,10 +13,8 @@
                         item.value }}
                     </li>
 
-
                 </ul>
             </div>
-            {{ property.description }}
             <div class="col-md-6 col-xl-4">
                 <ul class="property-list-details">
                     <li v-for="(item, index) in Details_2" :key="index"><span>{{ item.name }} :</span> {{ item.value }}
@@ -85,9 +83,6 @@ const fetchData = async () => {
         await refresh();
     }
     property.value = data.value
-    console.log(property.value)
-    console.log('Received properties data:', data.value);
-    console.log(property.value, "dadsadasdasdas")
 
 
 }

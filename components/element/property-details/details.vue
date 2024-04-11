@@ -1,7 +1,7 @@
 <template>
   <div class="property-details">
     <span class="font-roboto">{{ item.city }}</span>
-    <nuxt-link :to="'/property/single-property-8/' + item._id">
+    <nuxt-link :to="'/property/single-property-10/' + item._id">
       <h3>{{ item.location }}</h3>
     </nuxt-link>
     <h6>&euro; {{ item.price }}*</h6>

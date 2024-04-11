@@ -1,6 +1,6 @@
 <template>
-    <section class="without-top property-main small-section">
-        <div class="single-property-section">
+    <section class="without-top property-main small-section marginpb">
+        <div class="single-property-section mt-5">
             <div class="container">
                 <div class="single-title">
                     <div class="left-single">

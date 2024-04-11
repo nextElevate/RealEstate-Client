@@ -7,7 +7,7 @@
                 </div>
             </swiper-slide>
         </swiper>
-        <div class="single-property-section">
+        <div class="single-property-section mt-50">
             <div class="container">
                 <div class="single-title">
                     <div class="left-single">

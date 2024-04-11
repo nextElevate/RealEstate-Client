@@ -1,6 +1,6 @@
 <template>
     <ElementLoaderLoader1 />
-    <PropertySingle8 />
+    <PropertySingle10 />
 </template>
 
 <script setup lang="ts">

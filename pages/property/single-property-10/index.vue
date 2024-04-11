@@ -1,11 +1,11 @@
 <template>
     <ElementLoaderLoader1 />
-    <PropertySingle8Id />
+    <PropertySingle10 />
 </template>
 
 <script setup lang="ts">
 useHead({
-    title: 'Sheltos- image box page'
+    title: 'Sheltos- model details page'
 })
 </script>
 
