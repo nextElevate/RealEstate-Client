@@ -20,6 +20,12 @@ export interface Property {
     floor: number;
     sku: number;
     _id: string;
-    createdAt: string;
-    vip: boolean;
+    createdAt: Date;
+    label:[{
+        name:string;
+        vip:boolean;
+        new:boolean
+    }]
+    __v: number;
 }
+

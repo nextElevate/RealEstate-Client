@@ -9,9 +9,9 @@
                             <div class="desc-box">
                                 <ElementSinglepropertytabs />
                             </div>
-                            <PropertySingle1Singlereview />
+                            <PropertySingle10Singlereview />
                         </div>
-                        <PropertySingle2RelatedProperty />
+                        <PropertySingle10RelatedProperty />
                     </div>
                 </div>
             </div>
@@ -25,11 +25,6 @@
 let visible = ref<boolean>(false)
 let index = ref<number>(0)
 let imgs = ref<string[]>([])
-let image: string[] = ['/image/parallax/4.jpg', '/image/property/15.jpg', '/image/property/14.jpg']
-function showsingle() {
-    imgs.value = image
-    visible.value = true
-}
 
 function handleHide() {
     visible.value = false
